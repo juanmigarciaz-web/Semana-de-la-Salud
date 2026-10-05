@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VitalMente · Semana de la Salud 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Tipografía Montserrat en pesos Medium (500), Bold (700) y ExtraBold (800) -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Paleta gráfica oficial */
+  --primary-blue: #001a7b;       /* Azul profundo principal */
+  --primary-blue-dark: #001257;  /* Azul noche */
+  --mint-green: #5ed89b;         /* Verde menta */
+  --mint-soft: #eafaf1;          /* Fondo suave verde */
+  --cyan-accent: #00a3e0;        /* Azul cian complementario del isotipo */
+  
+  --bg-page: #f6f9fc;
+  --surface: #ffffff;
+  --ink: #0d1e38;                /* Texto principal */
+  --muted: #556987;              /* Texto secundario */
+  --line: #e2e8f0;
+  
+  /* Categorías de actividad acordes a la identidad */
+  --c-salud: #00a3e0;
+  --c-mente: #5b45b2;
+  --c-bien: #5ed89b;
+  --c-sst: #001a7b;
+  --c-belleza: #e05688;
+  --c-reto: #008779;
+  --c-charla: #e65100;
+
+  --font-main: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --radius-card: 16px;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 4px 12px rgba(0, 26, 123, 0.05);
+  --shadow-md: 0 8px 24px rgba(0, 26, 123, 0.08);
+}
+
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+
+body {
+  margin: 0;
+  background-color: var(--bg-page);
+  color: var(--ink);
+  font-family: var(--font-main);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Fondos de formas orgánicas y patrón sutil de puntos */
+body::before {
+  content: "";
+  position: fixed;
+  top: -120px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  border-radius: 43% 57% 70% 30% / 45% 62% 38% 55%;
+  background: radial-gradient(circle, rgba(94, 216, 155, 0.22) 0%, rgba(0, 163, 224, 0.08) 60%, transparent 80%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -150px;
+  left: -80px;
+  width: 450px;
+  height: 450px;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  background: radial-gradient(circle, rgba(0, 26, 123, 0.08) 0%, rgba(94, 216, 155, 0.1) 70%, transparent 80%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bg-pattern {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  width: 140px;
+  height: 100px;
+  background-image: radial-gradient(var(--primary-blue) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+  position: relative;
+}
+
+/* Header & Hero */
+header.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-vitalmente {
+  max-height: 110px; /* Tamaño ajustado */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 26, 123, 0.1));
+}
+
+.hero-title-group {
+  margin-top: 4px;
+}
+
+.hero-subtitle-pre {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cyan-accent);
+  margin-bottom: 6px;
+}
+
+.hero h1 {
+  font-weight: 800;
+  font-size: clamp(2rem, 5.5vw, 3rem);
+  line-height: 1.15;
+  margin: 0;
+  color: var(--primary-blue);
+  letter-spacing: -0.02em;
+}
+
+.hero .hero-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary-blue) 0%, #0c2e99 100%);
+  color: #ffffff;
+  padding: 4px 18px;
+  border-radius: var(--radius-pill);
+  font-size: clamp(1.4rem, 4.2vw, 2.2rem);
+  font-weight: 800;
+  margin-top: 8px;
+  box-shadow: 0 6px 18px rgba(0, 26, 123, 0.25);
+  border-left: 5px solid var(--mint-green);
+}
+
+.hero p.lead {
+  margin: 16px 0 0;
+  color: var(--muted);
+  max-width: 65ch;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.hero p.lead strong {
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+/* Selector de Días */
+.days {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 24px 0 16px;
+}
+
+.day {
+  appearance: none;
+  border: 2px solid #e5eaf2;
+  background: var(--surface);
+  color: var(--primary-blue);
+  border-radius: var(--radius-card);
+  padding: 14px 10px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  text-align: center;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.day::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.day:hover:not([aria-selected="true"]) {
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+.day b {
+  display: block;
+  font-size: 1.85rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.day small {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-top: 5px;
+  text-transform: capitalize;
+}
+
+.day[aria-selected="true"] {
+  background: linear-gradient(145deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+  border-color: var(--primary-blue);
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 26, 123, 0.3);
+  transform: translateY(-2px);
+}
+
+.day[aria-selected="true"]::after {
+  background: var(--mint-green);
+}
+
+.day[aria-selected="true"] small {
+  color: var(--mint-green);
+}
+
+.day:focus-visible, .chip:focus-visible {
+  outline: 3px solid var(--mint-green);
+  outline-offset: 3px;
+}
+
+/* Filtros por Sede */
+.chips-container {
+  margin: 20px 0 24px;
+}
+
+.chips-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 8px;
+  display: block;
+  letter-spacing: 0.05em;
+}
+
+.chips {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 2px 10px;
+  scrollbar-width: thin;
+}
+
+.chip {
+  appearance: none;
+  flex: 0 0 auto;
+  border: 1.5px solid #dce4ee;
+  background: var(--surface);
+  color: var(--muted);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.chip:hover {
+  border-color: var(--cyan-accent);
+  color: var(--primary-blue);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 26, 123, 0.22);
+}
+
+/* Encabezado del día seleccionado */
+h2.daytitle {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin: 26px 0 16px;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h2.daytitle::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--mint-green);
+}
+
+/* Bloques de sedes */
+.sede {
+  margin-top: 28px;
+}
+
+.sede h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--primary-blue);
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.sede h3::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #dbe4ef 0%, transparent 95%);
+}
+
+.sede.virtual h3 {
+  color: #0b685f;
+}
+
+/* Tarjetas de actividad */
+.row {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid rgba(0, 26, 123, 0.08);
+  border-left: 6px solid var(--k, var(--primary-blue));
+  border-radius: var(--radius-card);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  position: relative;
+}
+
+.row:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(0, 26, 123, 0.16);
+}
+
+.time {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary-blue);
+  line-height: 1.35;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.time em {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.38;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.tag {
+  color: var(--k);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.badge {
+  border: 1px solid #d3dfe9;
+  border-radius: var(--radius-pill);
+  padding: 2px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #f8fafc;
+  color: var(--muted);
+}
+
+.badge.v {
+  background: var(--mint-soft);
+  border-color: var(--mint-green);
+  color: #0d6e46;
+  font-weight: 700;
+}
+
+.ally-name {
+  font-weight: 600;
+  color: #334e68;
+}
+
+/* Recuadro de notas / requisitos */
+.note-card {
+  margin-top: 40px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border: 1.5px solid #dce5f0;
+  border-left: 6px solid var(--mint-green);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.note-card svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  fill: var(--primary-blue);
+}
+
+.note-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.note-card strong {
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.empty {
+  color: var(--muted);
+  padding: 32px 16px;
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--radius-card);
+  border: 1px dashed #ccd9e8;
+  margin-top: 14px;
+}
+
+@media (max-width: 600px) {
+  .wrap { padding: 20px 14px 44px; }
+  .logo-vitalmente { max-height: 88px; }
+  .row { grid-template-columns: 1fr; gap: 8px; padding: 14px 16px; }
+  .time { flex-direction: row; align-items: baseline; gap: 6px; }
+  .time em { display: inline; }
+  .days { gap: 8px; }
+  .day { padding: 10px 4px; }
+  .day b { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-pattern" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="hero">
+    <!-- Logotipo VitalMente -->
+    <div class="logo-container">
+      <img src="logo_vitalmente (1).png" alt="Logo VitalMente · Bienestar que empieza contigo" class="logo-vitalmente" onerror="this.style.display='none'">
+    </div>
+
+    <div class="hero-title-group">
+      <span class="hero-subtitle-pre">Semana de la Salud 2026</span>
+      <h1>Vive tu bienestar con</h1>
+      <div class="hero-tag">VitalMente</div>
+    </div>
+    <p class="lead">
+      Del <strong>13 al 16 de octubre</strong>. Consulta los espacios presenciales y virtuales que tenemos preparados para ti. Selecciona el <strong>día</strong> y tu <strong>sede</strong>.
+    </p>
+  </header>
+
+  <!-- Filtro por Días -->
+  <div class="days" role="tablist" aria-label="Día de la semana" id="days"></div>
+
+  <!-- Filtro por Sedes -->
+  <div class="chips-container">
+    <span class="chips-label">Filtrar por sede:</span>
+    <div class="chips" id="chips" aria-label="Filtrar por sede"></div>
+  </div>
+
+  <!-- Contenedor dinámico de actividades -->
+  <main id="out" aria-live="polite"></main>
+
+  <div class="note-card">
+    <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+    </svg>
+    <p>
+      <strong>Nota informativa:</strong> Este cronograma presenta la propuesta de actividades y horarios coordinada junto a los aliados. La programación y cupos específicos pueden estar sujetos a validación de cada sede.
+    </p>
+  </div>
+</div>
+
+<script>
+const K = {
+  salud: "var(--c-salud)",
+  mente: "var(--c-mente)",
+  bien: "var(--c-bien)",
+  sst: "var(--c-sst)",
+  belleza: "var(--c-belleza)",
+  reto: "var(--c-reto)",
+  charla: "var(--c-charla)"
+};
+
+const L = {
+  salud: "Salud física",
+  mente: "Salud mental",
+  bien: "Bienestar",
+  sst: "Seguridad y autocuidado",
+  belleza: "Cuidado personal",
+  reto: "Reto activo",
+  charla: "Conferencia"
+};
+
+const P = "Presencial", V = "Virtual", M = "Mixta";
+
+const D = [
+{n:13,d:"Martes",t:"Martes 13 de octubre",s:[
+ ["Transversal",[
+  ["reto","Reto de hidratación","SST",V,"all"],
+  ["bien","Pausa activa masiva","SST, Operación y ARL",V,"5 a 15 minutos"]]],
+ ["Olaya",[
+  ["sst","Reconéctate (simulador)","Way Group",P,"08:00","17:00"],
+  ["bien","Sostener y cuidar juntos: sostenibilidad y economía circular en el día a día","AMVA – Área Metropolitana",P,"10:00","12:00"],
+  ["mente","Charla: El arte del viaje","Diana Ávila",P,"10:00","15:00"],
+  ["sst","Golosa de higiene postural","ARL",P,"14:00","16:00"]]],
+ ["Aguacatala",[
+  ["sst","El Guardián del Botiquín","Copasst (líder: Xiomara)",P,"08:00","12:00"],
+  ["bien","Asesoría de caja de compensación","Comfama",P,"09:00","15:00"],
+  ["mente","Charla: El arte del viaje","Diana Ávila",P,"10:00","15:00"],
+  ["sst","Conservación de la voz (realidad virtual)","Estímulo",P,"14:00","16:00"]]],
+ ["I&R",[
+  ["sst","Autocuidado y trabajo en alturas","Mogra",P,"07:00","1 hora por encuentro"],
+  ["sst","Golosa de higiene postural y manejo de cargas","ARL",P,"07:00","09:00"]]],
+ ["Bogotá",[
+  ["bien","Asesoría: beneficios de la caja de compensación","Colsubsidio",P,"08:00","16:00"],
+  ["salud","Spa empresarial","EMI",P,"09:00","16:00"],
+  ["belleza","Fondo UNE: cuidado de la piel","Mary Kay",P,"09:00","16:00"],
+  ["salud","Bebidas nutricionales","Fuxión",P,"09:00","16:00"],
+  ["salud","Fondo UNE: vitaminas","Fondo UNE",P,"09:00","16:00"],
+  ["mente","Charla: El arte del viaje","Diana Ávila",P,"10:00","15:00"]]]
+]},
+{n:14,d:"Miércoles",t:"Miércoles 14 de octubre",s:[
+ ["Transversal",[
+  ["reto","Ruleta de bienestar","SST",V,"all"],
+  ["reto","Reto: preparación de loncheras saludables","SST",V,"all"]]],
+ ["Olaya",[
+  ["bien","Pausa activa (Pausi)","Jorge",P,"07:00","11:00"],
+  ["bien","Mercado Campesino","Alcaldía",P,"08:00","16:00"],
+  ["sst","Conservación de la voz (realidad virtual)","Estímulo",P,"09:00","11:00"],
+  ["mente","Manejo de las emociones","Diana Ávila",P,"12:00","14:00"],
+  ["bien","Movimiento consciente, mindfulness y técnicas de respiración","Comfama",P,"13:00","15:00"]]],
+ ["Aguacatala",[
+  ["salud","Medición de composición muscular: Nivélate","EMI",P,"08:00","16:00"],
+  ["sst","Reconéctate (simulador)","Way Group",P,"08:00","17:00"],
+  ["sst","Golosa de higiene postural","ARL",P,"09:00","11:30"],
+  ["mente","Manejo de las emociones","Diana Ávila",P,"12:00","14:00"],
+  ["bien","Pausa activa","Jorge",P,"13:00","17:00"]]],
+ ["Bogotá",[
+  ["salud","Sensibilización: cuidado de la espalda","H&S",P,"08:00","16:00"],
+  ["belleza","Cuidado de la piel","Mary Kay",P,"08:00","16:00"],
+  ["mente","Manejo de las emociones","Diana Ávila",P,"12:00","14:00"],
+  ["salud","Estilos de vida saludable","JM Consultores SST",P,"13:00","16:00"]]]
+]},
+{n:15,d:"Jueves",t:"Jueves 15 de octubre",s:[
+ ["Transversal",[
+  ["reto","El reto del peatón","SST",M,"all"]]],
+ ["Olaya",[
+  ["salud","Tamizaje IMC y riesgo cardiovascular","Colmédicos",P,"08:00","14:00"],
+  ["salud","Cuida tus sentidos","EMI",P,"08:00","16:00"],
+  ["salud","Tamizaje preventivo: programa cardiovascular","ARL, Dra. Wldy y nutricionista",P,"cita","Con cita previa"],
+  ["bien","Asesoría de caja de compensación","Comfama",P,"09:00","15:00"],
+  ["sst","El Guardián del Botiquín","Copasst (líder: Xiomara)",P,"08:00","12:00"],
+  ["mente","Espacio de meditación y relajación","Diana Ávila",P,"12:00","14:00"]]],
+ ["Aguacatala",[
+  ["sst","Distractores viales (realidad virtual)","Estímulo",P,"07:00","09:00"],
+  ["salud","Círculo de relajación","H&S",P,"08:00","16:00"],
+  ["belleza","Cuidado de la piel","Mary Kay",P,"08:00","16:00"],
+  ["belleza","Cuidado capilar","Fusión Selvática",P,"10:00","12:30","y de 13:30 a 16:00"],
+  ["bien","Sostener y cuidar juntos: sostenibilidad y economía circular en el día a día","AMVA – Área Metropolitana",P,"10:00","12:00"],
+  ["mente","Espacio de meditación y relajación","Diana Ávila",P,"12:00","14:00"]]],
+ ["I&R",[
+  ["sst","El Guardián del Botiquín","Copasst (líder: Xiomara)",P,"07:00","09:00"]]],
+ ["Bogotá",[
+  ["salud","Cuida tu corazón","EMI",P,"09:00","16:00"],
+  ["sst","Golosa de higiene postural, inspección ergonómica y sensibilización","ARL",P,"10:00","12:30"],
+  ["mente","Espacio de meditación y relajación","Diana Ávila",P,"12:00","14:00"],
+  ["charla","Charla: Enfermedades respiratorias","EMI",M,"14:00","15:00","Presencial en Bogotá y transmisión virtual"],
+  ["bien","Yoga de la risa","EPS Sanitas",P,"15:00","16:00"]]]
+]},
+{n:16,d:"Viernes",t:"Viernes 16 de octubre",s:[
+ ["Transversal",[
+  ["reto","Compromiso con el planeta","SST",M,"all"],
+  ["charla","Charla: Prevención de la salud mental en entornos laborales","Naszly Ramírez",V,"10:00","11:00"]]],
+ ["Olaya",[
+  ["salud","Donación de sangre","Cruz Roja Antioquia",P,"08:00","16:00"],
+  ["salud","Círculo de relajación","H&S",P,"08:00","16:00"],
+  ["belleza","Cuidado de la piel","Mary Kay",P,"08:00","16:00"],
+  ["salud","Tamizaje IMC y riesgo cardiovascular","Colmédicos",P,"08:00","14:00"]]],
+ ["Aguacatala",[
+  ["bien","Mercado Campesino","Alcaldía",P,"08:00","16:00"],
+  ["belleza","Cuidado capilar","Fusión Selvática",P,"10:00","12:30","y de 13:30 a 16:00"],
+  ["bien","Movimiento consciente, mindfulness y técnicas de respiración","Comfama",P,"13:00","15:00"]]],
+ ["I&R",[
+  ["sst","Taller: gestión de riesgos prioritarios y distractores viales","Estímulo",P,"07:00","08:00"]]],
+ ["Bogotá",[
+  ["bien","Crispetero","EMI",P,"08:00","15:00"],
+  ["sst","Reconéctate (simulador)","Way Group",P,"08:00","17:00"],
+  ["sst","El Guardián del Botiquín","Copasst (líder: Xiomara)",P,"08:00","12:00"],
+  ["salud","Taller: buenos hábitos alimenticios","EPS Sanitas",P,"15:00","16:00"]]]
+]}];
+
+function h12(t){
+  const [h,m]=t.split(":").map(Number);
+  const s = h>=12 ? "p. m." : "a. m.";
+  const hh = ((h+11)%12)+1;
+  return hh + ":" + String(m).padStart(2,"0") + " " + s;
+}
+
+function timeHTML(a){
+  if(a[4]==="all") return `<div class="time">Todo el día</div>`;
+  if(a[4]==="cita") return `<div class="time">Con cita<em>${a[5]}</em></div>`;
+  if(a[4].includes(":") && a[5] && a[5].includes(":")){
+    return `<div class="time">${h12(a[4])} – ${h12(a[5])}${(a[6]&&a[3]!==M)?`<em>${a[6]}</em>`:""}</div>`;
+  }
+  if(a[4].includes(":")) return `<div class="time">${h12(a[4])}<em>${a[5]}</em></div>`;
+  return `<div class="time">${a[4]}</div>`;
+}
+
+function rowHTML(a){
+  const mod = a[3]===V ? `<span class="badge v">Virtual</span>` : `<span class="badge">${a[3]}</span>`;
+  const extra = (a[4]!=="all"&&a[4]!=="cita"&&a[6]&&a[3]===M&&a[6].includes("Presencial")) ? `<span>${a[6]}</span>` : "";
+  return `
+    <article class="row" style="--k:${K[a[0]]}">
+      ${timeHTML(a)}
+      <div>
+        <div class="name">${a[1]}</div>
+        <div class="meta">
+          <span class="tag">${L[a[0]]}</span>
+          ${mod}
+          <span class="ally-name">${a[2]}</span>
+          ${extra}
+        </div>
+      </div>
+    </article>`;
+}
+
+let day = 0, sede = "Todas";
+const daysEl = document.getElementById("days");
+const chipsEl = document.getElementById("chips");
+const out = document.getElementById("out");
+const SEDES = ["Todas","Transversal","Olaya","Aguacatala","I&R","Bogotá"];
+
+function renderTabs(){
+  daysEl.innerHTML = D.map((x,i)=>`
+    <button class="day" role="tab" aria-selected="${i===day}" data-i="${i}">
+      <b>${x.n}</b>
+      <small>${x.d}</small>
+    </button>`).join("");
+
+  chipsEl.innerHTML = SEDES.map(s=>`
+    <button class="chip" aria-pressed="${s===sede}" data-s="${s}">
+      ${s==="Transversal" ? "Virtual y transversal" : s}
+    </button>`).join("");
+}
+
+function render(){
+  renderTabs();
+  const x = D[day];
+  const secs = x.s.filter(([n]) => sede==="Todas" || n===sede);
+  
+  out.innerHTML = `
+    <h2 class="daytitle">${x.t}</h2>` + 
+    (secs.length ? secs.map(([n, items])=>`
+      <section class="sede ${n==="Transversal" ? "virtual" : ""}">
+        <h3>${n==="Transversal" ? "Para todas las sedes (Transversal)" : n}</h3>
+        ${items.map(rowHTML).join("")}
+      </section>`).join("") 
+    : `<p class="empty">No hay actividades registradas en esta sede para este día.</p>`);
+}
+
+daysEl.addEventListener("click", e => {
+  const b = e.target.closest("[data-i]");
+  if(b) { day = +b.dataset.i; render(); }
+});
+
+chipsEl.addEventListener("click", e => {
+  const b = e.target.closest("[data-s]");
+  if(b) { sede = b.dataset.s; render(); }
+});
+
+render();
+</script>
+</body>
+</html>
